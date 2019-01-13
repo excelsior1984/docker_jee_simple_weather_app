@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePogodaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pogodaController.selected.id}" title="#{bundle.CreatePogodaTitle_id}" required="true" requiredMessage="#{bundle.CreatePogodaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_lat}" for="lat" />
+                    <h:inputText id="lat" value="#{pogodaController.selected.lat}" title="#{bundle.CreatePogodaTitle_lat}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_lon}" for="lon" />
+                    <h:inputText id="lon" value="#{pogodaController.selected.lon}" title="#{bundle.CreatePogodaTitle_lon}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_temp}" for="temp" />
+                    <h:inputText id="temp" value="#{pogodaController.selected.temp}" title="#{bundle.CreatePogodaTitle_temp}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_humidity}" for="humidity" />
+                    <h:inputText id="humidity" value="#{pogodaController.selected.humidity}" title="#{bundle.CreatePogodaTitle_humidity}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_pressure}" for="pressure" />
+                    <h:inputText id="pressure" value="#{pogodaController.selected.pressure}" title="#{bundle.CreatePogodaTitle_pressure}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_tempmin}" for="tempmin" />
+                    <h:inputText id="tempmin" value="#{pogodaController.selected.tempmin}" title="#{bundle.CreatePogodaTitle_tempmin}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_tempmax}" for="tempmax" />
+                    <h:inputText id="tempmax" value="#{pogodaController.selected.tempmax}" title="#{bundle.CreatePogodaTitle_tempmax}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_speed}" for="speed" />
+                    <h:inputText id="speed" value="#{pogodaController.selected.speed}" title="#{bundle.CreatePogodaTitle_speed}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_deg}" for="deg" />
+                    <h:inputText id="deg" value="#{pogodaController.selected.deg}" title="#{bundle.CreatePogodaTitle_deg}" />
+                    <h:outputLabel value="#{bundle.CreatePogodaLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{pogodaController.selected.name}" title="#{bundle.CreatePogodaTitle_name}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pogodaController.create}" value="#{bundle.CreatePogodaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pogodaController.prepareList}" value="#{bundle.CreatePogodaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePogodaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

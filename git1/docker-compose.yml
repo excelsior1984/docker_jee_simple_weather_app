@@ -1,0 +1,30 @@
+version: "3.1"
+
+services:
+  postgres2:
+    build:
+      context: .
+    image: postgres2:latest
+    ports:
+     - "5432:5432"
+    hostname: postgres2
+    environment:
+    - PGDATA=/tmp
+  glassfish2:
+    image: glassfish2:latest
+    ports:
+     - "4848:4848"
+     - "8080:8080"
+     - "8181:8181"     
+    hostname: glassfish2
+    depends_on:
+     - postgres2
+    tty: true
+#    volumes:
+#      - "/tmp/autodeploy:/usr/local/glassfish4/glassfish/domains/domain1/autodeploy"
+
+
+
+
+
+    

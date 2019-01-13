@@ -1,0 +1,20 @@
+./bin/asadmin
+asadmin> change-admin-password
+
+./bin/asadmin --host localhost --port 4848 enable-secure-admin
+
+asadmin --host localhost --port 5858 enable-secure-admin
+
+asadmin --host localhost --port 6868 enable-secure-admin
+
+./bin/asadmin 
+asadmin> restart-domain domain1
+
+
+-------------------
+#asadmin --host localhost --port 4848 change-admin-password
+#asadmin --host localhost --port 4848 enable-secure-admin
+
+#./asadmin stop-domain domain1
+
+#./asadmin start-domain domain1

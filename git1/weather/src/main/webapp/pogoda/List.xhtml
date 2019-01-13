@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPogodaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPogodaEmpty}" rendered="#{pogodaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pogodaController.items.rowCount > 0}">
+                    <h:outputText value="#{pogodaController.pagination.pageFirstItem + 1}..#{pogodaController.pagination.pageLastItem + 1}/#{pogodaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pogodaController.previous}" value="#{bundle.Previous} #{pogodaController.pagination.pageSize}" rendered="#{pogodaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pogodaController.next}" value="#{bundle.Next} #{pogodaController.pagination.pageSize}" rendered="#{pogodaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pogodaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_lat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lat}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_lon}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lon}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_temp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temp}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_humidity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.humidity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_pressure}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pressure}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_tempmin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tempmin}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_tempmax}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tempmax}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_speed}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.speed}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_deg}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deg}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPogodaTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pogodaController.prepareView}" value="#{bundle.ListPogodaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pogodaController.prepareEdit}" value="#{bundle.ListPogodaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pogodaController.destroy}" value="#{bundle.ListPogodaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pogodaController.prepareCreate}" value="#{bundle.ListPogodaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPogodaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
