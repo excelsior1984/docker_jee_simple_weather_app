@@ -1,5 +1,3 @@
-TO DEPLOY APP
-
 to run:
 
 git1/run.sh
