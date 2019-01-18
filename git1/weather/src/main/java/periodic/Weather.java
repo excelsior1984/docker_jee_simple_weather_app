@@ -33,7 +33,7 @@ public class Weather {
 
     @Schedule(hour = "*", minute = "*/1", persistent = false)
     public void log() {
-        System.out.println("LOGGING SINGLETON Weather");
+//        System.out.println("LOGGING SINGLETON Weather");
         Date date = new Date();
 
         System.out.println(date.toString());

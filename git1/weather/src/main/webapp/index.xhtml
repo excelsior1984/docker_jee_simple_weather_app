@@ -1,32 +1,52 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
         <br />
         <h:link outcome="/pogoda/List" value="Show All Pogoda Items"/>
- 
-                SET COORDINATES
+
+        SET COORDINATES
         <br/>
         <h:form>
-        <br/>
-        <br/>
+            <br/>
+            <br/>
             LONGITUDE
             <h:inputText binding="#{input1}" />
             <h:commandButton value="Set Lon" action="#{coords.setLon(input1.value)}" />
-        <br/>
+            <br/>
             LATITUDE
             <h:inputText binding="#{input2}" />
             <h:commandButton value="Set Lat" action="#{coords.setLat(input2.value)}" />
 
-            
         </h:form>
+
+        <br/>
+
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:panel header="Select a City" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel for="city2" value="Editable: " />
+                    <p:selectOneMenu id="city2" value="#{miasto.city}" effect="fold" editable="true">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItems value="#{miasto.cities}" />
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <p:commandButton value="Submit" update="msgs" action="#{miasto.doWork}" icon="pi pi-check" />
+            </p:panel>
+        </h:form>
+
     </h:body>   
-    
+
 </html>
 

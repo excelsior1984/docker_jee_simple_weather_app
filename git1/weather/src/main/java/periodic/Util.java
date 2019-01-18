@@ -26,6 +26,7 @@ public class Util {
         sb.append(lat);
         sb.append("&lon=");
         sb.append(lon);
+        sb.append("&units=metric");
         WebTarget target = null;
         try {
             target = client.target(sb.toString());
