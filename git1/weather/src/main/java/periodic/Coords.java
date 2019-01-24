@@ -29,6 +29,7 @@ public class Coords implements Serializable{
     public void setLat(double lat) {
         this.lat = lat;
 //        weather.lat = lat;
+weather.setCity(null);
         weather.setLat(lat);
     }
 
@@ -39,7 +40,16 @@ public class Coords implements Serializable{
     public void setLon(double lon) {
         this.lon = lon;
 //        weather.lon = lon;
+weather.setCity(null);
         weather.setLon(lon);
+    }
+    
+    public void showData(){
+        System.out.println("LAT = " + lat + " LON = " + lon);
+        weather.setCity(null);
+        weather.setLon(lon);
+        weather.setLat(lat);
+
     }
     
     @EJB

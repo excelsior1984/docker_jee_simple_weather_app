@@ -18,12 +18,18 @@
             <br/>
             <br/>
             LONGITUDE
-            <h:inputText binding="#{input1}" />
-            <h:commandButton value="Set Lon" action="#{coords.setLon(input1.value)}" />
+            <p:inputText value="#{coords.lon}"/>
+<!--            <h:inputText value="#{coords.lon}" />-->
+<!--            <h:inputText binding="#{input1}" />
+            <h:commandButton value="Set Lon" action="#{coords.setLon(input1.value)}" />-->
             <br/>
             LATITUDE
-            <h:inputText binding="#{input2}" />
-            <h:commandButton value="Set Lat" action="#{coords.setLat(input2.value)}" />
+            <p:inputText value="#{coords.lat}"/>
+<!--            <h:inputText value="#{coords.lat}" />-->
+<!--            <h:inputText binding="#{input2}" />
+            <h:commandButton value="Set Lat" action="#{coords.setLat(input2.value)}" />-->
+<!--            <h:commandButton value="Set Lat" action="#{coords.showData()}" />-->
+            <p:commandButton value="Set LOCATION" action="#{coords.showData()}"/>
 
         </h:form>
 

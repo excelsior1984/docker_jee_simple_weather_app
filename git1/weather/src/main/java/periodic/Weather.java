@@ -11,6 +11,18 @@ import javax.ejb.Singleton;
 public class Weather {
     
     public double lat, lon;
+
+    public String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+//        this.lat = 0;
+//        this.lon = 0;
+    }
     
     public double getLat() {
         return lat;
@@ -35,14 +47,23 @@ public class Weather {
     public void log() {
 //        System.out.println("LOGGING SINGLETON Weather");
         Date date = new Date();
-
         System.out.println(date.toString());
-        
-        System.out.println("lat = " + lat + " lon = " + lon);
-        String a1 = Util.getData(Double.toString(lat), Double.toString(lon));
 
         Pogoda p1=null;
+        String a1;
+
         try {
+        if(lat == 0 && lon == 0 && city != null) {
+            System.out.println("city = " + city);
+            System.out.println("lat = " + lat + " lon = " + lon);
+            a1 = Util.getData2(city);
+        } else {
+            System.out.println("city = " + city);
+            System.out.println("lat = " + lat + " lon = " + lon);
+            a1 = Util.getData(Double.toString(lat), Double.toString(lon));
+        }
+        
+
             p1 = Util.parse_store(a1);
             facade.create(p1);
         } catch (Exception e) {

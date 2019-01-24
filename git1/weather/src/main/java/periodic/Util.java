@@ -87,4 +87,22 @@ public class Util {
         return pog;
 
     }
+
+    static String getData2(String city) {
+        Client client = ClientBuilder.newClient();
+        StringBuilder sb = new StringBuilder();
+        sb.append("http://api.openweathermap.org/data/2.5/weather?APPID=55cba00e08c109668531fdc82a82bb2b&q=");
+        sb.append(city);
+        sb.append("&units=metric");
+        WebTarget target = null;
+        try {
+            target = client.target(sb.toString());
+        } catch (Exception e) {
+            System.out.println("Exeption = " + e);
+        }
+        System.out.println(target.request().get(String.class));
+        return target.request().get(String.class);
+      
+
+    }
 }
