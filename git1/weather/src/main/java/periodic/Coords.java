@@ -18,7 +18,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean
 //@SessionScoped
 @RequestScoped
-public class Coords implements Serializable{
+public class Coords implements Serializable {
 
     double lat, lon;
 
@@ -29,7 +29,7 @@ public class Coords implements Serializable{
     public void setLat(double lat) {
         this.lat = lat;
 //        weather.lat = lat;
-weather.setCity(null);
+        weather.setCity(null);
         weather.setLat(lat);
     }
 
@@ -40,18 +40,17 @@ weather.setCity(null);
     public void setLon(double lon) {
         this.lon = lon;
 //        weather.lon = lon;
-weather.setCity(null);
+        weather.setCity(null);
         weather.setLon(lon);
     }
-    
-    public void showData(){
+
+    public void showData() {
         System.out.println("LAT = " + lat + " LON = " + lon);
         weather.setCity(null);
         weather.setLon(lon);
         weather.setLat(lat);
-
     }
-    
+
     @EJB
     Weather weather;
 
