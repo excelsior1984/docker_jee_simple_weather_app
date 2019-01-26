@@ -11,25 +11,17 @@
     <h:body>
         <br />
         <h:link outcome="/pogoda/List" value="Show All Pogoda Items"/>
-
+        <br/>
         SET COORDINATES
         <br/>
         <h:form>
-            <br/>
-            <br/>
+            <p:growl id="msgs2" showDetail="true" />
             LONGITUDE
-            <p:inputText value="#{coords.lon}"/>
-<!--            <h:inputText value="#{coords.lon}" />-->
-<!--            <h:inputText binding="#{input1}" />
-            <h:commandButton value="Set Lon" action="#{coords.setLon(input1.value)}" />-->
+            <p:inputText value="#{coordsBean.lon}"/>
             <br/>
             LATITUDE
-            <p:inputText value="#{coords.lat}"/>
-<!--            <h:inputText value="#{coords.lat}" />-->
-<!--            <h:inputText binding="#{input2}" />
-            <h:commandButton value="Set Lat" action="#{coords.setLat(input2.value)}" />-->
-<!--            <h:commandButton value="Set Lat" action="#{coords.showData()}" />-->
-            <p:commandButton value="Set LOCATION" action="#{coords.showData()}"/>
+            <p:inputText value="#{coordsBean.lat}"/>
+            <p:commandButton update="msgs2" value="Set LOCATION" action="#{coordsBean.setCoords()}"/>
 
         </h:form>
 
@@ -42,13 +34,13 @@
                 <h:panelGrid columns="2" cellpadding="5">
 
                     <p:outputLabel for="city2" value="Editable: " />
-                    <p:selectOneMenu id="city2" value="#{miasto.city}" effect="fold" editable="true">
+                    <p:selectOneMenu id="city2" value="#{cityBean.city}" effect="fold" editable="true">
                         <f:selectItem itemLabel="Select One" itemValue="" />
-                        <f:selectItems value="#{miasto.cities}" />
+                        <f:selectItems value="#{cityBean.cities}" />
                     </p:selectOneMenu>
 
                 </h:panelGrid>
-                <p:commandButton value="Submit" update="msgs" action="#{miasto.doWork}" icon="pi pi-check" />
+                <p:commandButton value="Submit" update="msgs" action="#{cityBean.setCity}" icon="pi pi-check" />
             </p:panel>
         </h:form>
 

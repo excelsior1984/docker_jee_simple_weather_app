@@ -1,27 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lista;
+package periodic;
 
+import events.CityQualifier;
+import events.RestEvent;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Event;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import periodic.Weather;
+import javax.inject.Inject;
 
 @ManagedBean
 @ViewScoped
 //@RequestScoped
-public class Miasto {
+public class CityBean implements Serializable {
 
     Map<String, String> cities2;
     private String city;
@@ -66,23 +63,20 @@ public class Miasto {
 
     }
 
-    @EJB
-    Weather weather;
+    @Inject
+    @CityQualifier
+    Event<RestEvent> cityEvent;
 
-    public void doWork() {
+    public void setCity() {
 
         FacesMessage msg;
         if (city != null) {
             msg = new FacesMessage("Selected", city);
-            weather.setLat(0);
-            weather.setLon(0);
-            System.out.println("getting city = " + cities2.get(city));
-            weather.setCity(cities2.get(city));
-
+            RestEvent event = new RestEvent(0, 0, cities2.get(city));            
+            cityEvent.fire(event);
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid", "City is not selected.");
         }
-
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
